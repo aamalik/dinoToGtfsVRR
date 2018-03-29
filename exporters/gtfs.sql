@@ -207,12 +207,12 @@ journeyref IN (SELECT DISTINCT trip_id from gtfs_trips) AND
 onwardjourneyref IN (SELECT DISTINCT trip_id from gtfs_trips)
 );
 
-\COPY (SELECT * FROM gtfs_feed_info) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/feed_info.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_agency) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/agency.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_shapes WHERE shape_id::text IN (SELECT DISTINCT shape_id::text FROM gtfs_trips))  to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/shapes.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_routes) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/routes.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_calendar_dates) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/calendar_dates.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_stops) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/stops.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_trips) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/trips.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_stop_times) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/stop_times.txt' CSV HEADER;
-\COPY (SELECT * FROM gtfs_transfers) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs_dino_vrr/gtfs/transfers.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_feed_info) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/feed_info.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_agency) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/agency.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_shapes WHERE shape_id::text IN (SELECT DISTINCT shape_id::text FROM gtfs_trips))  to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/shapes.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_routes) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/routes.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_calendar_dates) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/calendar_dates.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_stops) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/stops.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_trips) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/trips.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_stop_times) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/stop_times.txt' CSV HEADER;
+\COPY (SELECT * FROM gtfs_transfers) to '/Users/asfandyar/IdeaProjects/dinoToGtfsVRR/gtfs/transfers.txt' CSV HEADER;

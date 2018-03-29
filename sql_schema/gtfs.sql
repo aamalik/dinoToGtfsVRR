@@ -7,7 +7,7 @@ replace(cast(date 'yesterday' as text),'-','') as feed_start_date,
 replace(cast(max(validdate) as text),'-','') as feed_end_date,
 nextval('gtfs_version') as feed_version
 FROM availabilityconditionday
-) to '/gtfs_dino_vrr/feed_info.txt' CSV HEADER;
+) to '/gtfs/feed_info.txt' CSV HEADER;
 
 copy(
 SELECT
@@ -17,7 +17,7 @@ url as agency_url,
 timezone as agency_timezone,
 phone as agency_phone
 FROM operator
-) to '/gtfs_dino_vrr/agency.txt' CSV HEADER;
+) to '/gtfs/agency.txt' CSV HEADER;
 
 copy(
 SELECT
@@ -45,7 +45,7 @@ timezone as stop_timezone,
 0 as wheelchair_boarding,
 NULL as platformcode
 FROM stoparea
-) to '/gtfs_dino_vrr/stops.txt' CSV HEADER;
+) to '/gtfs/stops.txt' CSV HEADER;
 
 copy(
 SELECT 
@@ -57,7 +57,7 @@ NULL as route_desc,
 gtfs_route_type as route_type
 FROM 
 line as l LEFT JOIN operator as o ON (l.operatorref = o.id) LEFT JOIN transportmode using (transportmode)
-) to '/gtfs_dino_vrr/routes.txt' CSV HEADER;
+) to '/gtfs/routes.txt' CSV HEADER;
 
 copy(
 SELECT 
@@ -68,7 +68,7 @@ pointorder as shape_pt_sequence,
 distancefromstart as shape_dist_traveled
 FROM pointinroute
 ORDER by routeref,pointorder
-) to '/gtfs_dino_vrr/shapes.txt' CSV HEADER;
+) to '/gtfs/shapes.txt' CSV HEADER;
 
 copy(
 SELECT 
@@ -78,7 +78,7 @@ replace(validdate::text,'-','') as date,
 FROM availabilityconditionday as ad,activeavailabilitycondition as a
 WHERE
 ad.availabilityconditionref = a.id AND isavailable = true
-) to '/gtfs_dino_vrr/calendar_dates.txt' CSV HEADER;
+) to '/gtfs/calendar_dates.txt' CSV HEADER;
 
 copy(
 SELECT 
@@ -100,7 +100,7 @@ FROM servicejourney as j LEFT JOIN journeypattern as p on (j.journeypatternref =
                          LEFT JOIN route as r on (p.routeref = r.id)
                          LEFT JOIN destinationdisplay as d ON (p.destinationdisplayref = d.id)
                          LEFT JOIN productcategory as pc on (j.productcategoryref = pc.id)
-) to '/gtfs_dino_vrr/trips.txt' CSV HEADER;
+) to '/gtfs/trips.txt' CSV HEADER;
 
 copy(
 SELECT 
@@ -126,7 +126,7 @@ FROM servicejourney as j LEFT JOIN journeypattern as p on (j.journeypatternref =
 t_pt.pointorder)
                          LEFT JOIN destinationdisplay as d ON (p_pt.destinationdisplayref = d.id), scheduledstoppoint as s_pt
 WHERE p_pt.pointref = s_pt.id and totaldrivetime is not null
-) to '/gtfs_dino_vrr/stop_times.txt' CSV HEADER;
+) to '/gtfs/stop_times.txt' CSV HEADER;
 
 copy (
 SELECT
@@ -141,5 +141,5 @@ CASE WHEN (transfer_type = 0) THEN 3
      WHEN (transfer_type = 2) THEN 1 END as transfer_type
 FROM 
 journeytransfers
-) to '/gtfs_dino_vrr/transfers.txt' CSV HEADER;
+) to '/gtfs/transfers.txt' CSV HEADER;
 

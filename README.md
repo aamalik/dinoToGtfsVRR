@@ -39,7 +39,7 @@ source venv/bin/activate
 
 Move Dino Data into corresponding Postgresql database
 ```
-python import_dino2posgtres.py /gtfs_dino_vrr/dino_vrr_20170307
+python import_dino2posgtres.py /dino_vrr/dino_vrr_20170307
 ```
 
 Convert all data in our postgreql to bliksemintegration format in Postgres
@@ -47,7 +47,7 @@ Convert all data in our postgreql to bliksemintegration format in Postgres
 python vrr-import.py
 ```
 
-Convert from bliksemintegration format to GTFS data format and into our gtfs files which get saved in gtfs_dino_vrr/gtfs folder
+Convert from bliksemintegration format to GTFS data format and into our gtfs files which get saved in /gtfs folder
 ```
 psql -h localhost -U asfandyar -d ridprod -f exporters/gtfs.sql
 ```
