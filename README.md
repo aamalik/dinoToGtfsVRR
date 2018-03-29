@@ -42,4 +42,4 @@ psql -h localhost -U asfandyar -d ridprod -f exporters/gtfs.sql
 
 Code adapted from bliksemintegration from [blikemlabs](http://docs.plannerstack.org/en/latest/bliksem/Introduction/)
 
-Dino data downloaded from (openVRR)[https://www.openvrr.de/id/dataset/dino-daten]
+Dino data downloaded from [openVRR](https://www.openvrr.de/id/dataset/dino-daten)
