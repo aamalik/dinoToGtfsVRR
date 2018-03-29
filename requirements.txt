@@ -1,0 +1,5 @@
+lxml
+psycopg2
+beautifulsoup4
+pandas
+sqlalchemy
