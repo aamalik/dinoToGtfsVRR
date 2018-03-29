@@ -33,7 +33,7 @@ pip install psycopg2
 
 Importing and exporting data to Postgres Database from bliksemintegration
 ```
-python import_dino2posgtres.py ~/dinoData/dino_vrr_20170307
+python import_dino2posgtres.py /gtfs_dino_vrr/dino_vrr_20170307
 python vrr-import.py
 psql -h localhost -U asfandyar -d ridprod -f exporters/gtfs.sql
 ```

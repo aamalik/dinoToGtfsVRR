@@ -12,10 +12,10 @@ date_maps.update({'service_restriction.din': ['DATE_FROM', 'DATE_UNTIL'],
                   'calendar_of_the_company.din': ['DAY'],
                   'set_version.din': ['PERIOD_DATE_FROM', 'PERIOD_DATE_TO']})
 
-for filename in os.listdir("/Users/asfandyar/DINO/dino_vrr_20170307"):
+for filename in os.listdir("/Users/asfandyar/gtfs_dino_vrr/dino_vrr_20170307"):
     if filename.endswith(".din"):
         print('Loading {}'.format(filename))
-        df = pd.read_csv('/Users/asfandyar/DINO/dino_vrr_20170307/' + filename, delimiter=';', skipinitialspace=True,
+        df = pd.read_csv('/Users/asfandyar/gtfs_dino_vrr/dino_vrr_20170307/' + filename, delimiter=';', skipinitialspace=True,
                          encoding='iso-8859-1', parse_dates=date_maps[filename])
         df.columns = [x.lower() for x in df.columns]
         for column in df.columns:
