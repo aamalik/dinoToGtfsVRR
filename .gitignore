@@ -4,3 +4,4 @@ pip-log.txt
 venv
 *.pyc
 *.log
+gtfs/*
